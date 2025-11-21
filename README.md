@@ -35,7 +35,7 @@ Built with a shared **Django REST API** used by both a **Web Interface** and a *
 ---
 
 ## 📁 Directory Structure
-
+```
 chem-equipment-visualizer/
 │
 ├── backend/ # REST API + analytics engine
@@ -61,16 +61,19 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 
+```
 🌐 Web Application (React)
 cd web-frontend
 npm install
 npm start
 
+```
 🖥 Desktop Application (PyQt)
 cd desktop-frontend
 pip install -r requirements.txt
 python main.py
 
+```
 🔐 Key API Endpoints
 Method	Endpoint	Purpose
 POST	/api/register/	Create a new user
@@ -80,6 +83,7 @@ GET	/api/history/	Fetch last 5 datasets
 GET	/api/summary/<id>/	Get dataset summary
 DELETE	/api/dataset/delete/<id>/	Remove a dataset
 
+```
 🧭 Suggested Future Enhancements
 Feature	Benefit
 📄 PDF Report Export	Share or document analysis results
@@ -89,6 +93,7 @@ Feature	Benefit
 💽 Desktop .exe Packaging	Industrial and factory floor usability
 🧑‍🔬 Final Thought
 
+```
 This project is more than a CSV visualizer —
 it’s a step toward intelligent chemical equipment monitoring, accessible to students, labs, and industry professionals.
 
