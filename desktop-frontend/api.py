@@ -3,7 +3,10 @@ import requests
 API_BASE = "http://127.0.0.1:8000/api/"
 
 def login(username, password):
-    resp = requests.post(f"{API_BASE}auth/login/", json={"username": username, "password": password})
+    resp = requests.post(
+        f"{API_BASE}login/",
+        json={"username": username, "password": password}
+    )
     resp.raise_for_status()
     return resp.json()["token"]
 
@@ -28,6 +31,14 @@ def fetch_history(token):
 def fetch_summary(dataset_id, token):
     resp = requests.get(
         f"{API_BASE}summary/{dataset_id}/",
+        headers={"Authorization": f"Token {token}"}
+    )
+    resp.raise_for_status()
+    return resp.json()
+
+def delete_dataset(dataset_id, token):
+    resp = requests.delete(
+        f"{API_BASE}dataset/delete/{dataset_id}/",
         headers={"Authorization": f"Token {token}"}
     )
     resp.raise_for_status()
