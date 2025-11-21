@@ -41,14 +41,8 @@ chem-equipment-visualizer/
 ├── backend/ # REST API + analytics engine
 ├── web-frontend/ # React UI for browsers
 ├── desktop-frontend/ # PyQt UI for desktop users
-│
-├── README.md # 🧾 Project overview
-├── PROJECT_PLAN.md # 📌 Milestone roadmap
-└── CONTRIBUTING.md # 🤝 Development guidelines
-
-
----
-
+└── README.md # 🧾 Project overview
+```
 ## 🚀 Quick Start Guide
 ```
 ### 🔧 Backend (Django API)
@@ -77,23 +71,22 @@ python main.py
 
 ```
 🔐 Key API Endpoints
-```bash
-Method	Endpoint	Purpose
-POST	/api/register/	Create a new user
-POST	/api/login/	Authenticate & retrieve token
-POST	/api/upload/	Upload CSV & auto-analyze
-GET	/api/history/	Fetch last 5 datasets
-GET	/api/summary/<id>/	Get dataset summary
-DELETE	/api/dataset/delete/<id>/	Remove a dataset
+```
+| Method | Endpoint | Purpose |
+| POST	 | /api/register/ |	Create a new user |
+| POST	 | /api/login/ |	Authenticate & retrieve token |
+| POST	 | /api/upload/ |	Upload CSV & auto-analyze |
+| GET	 | /api/history/ |	Fetch last 5 datasets |
+| GET	 | /api/summary/<id>/ |	Get dataset summary |
+| DELETE | /api/dataset/delete/<id>/ |	Remove a dataset |
 
 ```
 🧭 Suggested Future Enhancements
-```bash
+```
 Feature	Benefit
-📄 PDF Report Export	Share or document analysis results
-🔮 Trend Prediction & Anomaly Detection	Predict maintenance issues
+📄 CSV Report Export	Share or document analysis results
+🔮 Trend Prediction 
 🛠 Admin Panel	Multi-user equipment data monitoring
-☁ Cloud Deployment	Remote access & scalability
 💽 Desktop .exe Packaging	Industrial and factory floor usability
 🧑‍🔬 Final Thought
 
