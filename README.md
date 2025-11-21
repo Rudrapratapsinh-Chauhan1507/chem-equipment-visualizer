@@ -50,7 +50,7 @@ chem-equipment-visualizer/
 ---
 
 ## 🚀 Quick Start Guide
-
+```
 ### 🔧 Backend (Django API)
 ```bash
 cd backend
@@ -63,18 +63,21 @@ python manage.py runserver
 
 ```
 🌐 Web Application (React)
+```bash
 cd web-frontend
 npm install
 npm start
 
 ```
 🖥 Desktop Application (PyQt)
+```bash
 cd desktop-frontend
 pip install -r requirements.txt
 python main.py
 
 ```
 🔐 Key API Endpoints
+```bash
 Method	Endpoint	Purpose
 POST	/api/register/	Create a new user
 POST	/api/login/	Authenticate & retrieve token
@@ -85,6 +88,7 @@ DELETE	/api/dataset/delete/<id>/	Remove a dataset
 
 ```
 🧭 Suggested Future Enhancements
+```bash
 Feature	Benefit
 📄 PDF Report Export	Share or document analysis results
 🔮 Trend Prediction & Anomaly Detection	Predict maintenance issues
