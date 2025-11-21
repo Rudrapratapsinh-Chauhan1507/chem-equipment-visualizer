@@ -71,20 +71,17 @@ python main.py
 
 ```
 🔐 Key API Endpoints
-```
 | Method | Endpoint | Purpose |
 |--------|------------|----------|
-| POST	 | /api/register/ |	Create a new user |
+| **POST**	 | /api/register/ |	Create a new user |
 | POST	 | /api/login/ |	Authenticate & retrieve token |
 | POST	 | /api/upload/ |	Upload CSV & auto-analyze |
 | GET	 | /api/history/ |	Fetch last 5 datasets |
 | GET	 | /api/summary/<id>/ |	Get dataset summary |
 | DELETE | /api/dataset/delete/<id>/ |	Remove a dataset |
 
-```
+
 🧭 Suggested Future Enhancements
-```
-Feature	Benefit
 ```
 📄 PDF Report Export	Share or document analysis results
 🔮 Trend Prediction & Anomaly Detection	Predict maintenance issues
