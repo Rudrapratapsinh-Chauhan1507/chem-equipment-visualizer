@@ -86,64 +86,78 @@ function App() {
 
   // Top navigation bar
   return (
-    <div>
+    <div style={{ background: "#eef3f7", minHeight: "100vh" }}>
       <nav
         style={{
-          background: "#296cad",
+          background: "linear-gradient(135deg, #1f6396, #296cad)",
           color: "white",
           padding: "16px 32px",
-          borderRadius: "0 0 10px 10px",
-          marginBottom: "22px",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.12)",
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between"
+          justifyContent: "space-between",
+          borderBottomLeftRadius: "14px",
+          borderBottomRightRadius: "14px",
+          position: "sticky",
+          top: 0,
+          zIndex: 999,
         }}
       >
-        <div style={{fontWeight: "bold", fontSize: "1.15em"}}>
+        <div style={{ fontWeight: "700", fontSize: "1.25em", letterSpacing: "0.6px" }}>
           Chem Equipment Visualizer
         </div>
+
         {token && (
-          <div>
+          <div style={{ display: "flex", gap: "12px" }}>
             <button
               style={{
-                background: "#fff",
-                color: "#296cad",
+                background: "#ffffff",
+                color: "#1f6396",
                 border: "none",
-                borderRadius: "4px",
+                borderRadius: "8px",
                 padding: "8px 18px",
-                fontWeight: "bold",
-                cursor: "pointer"
+                fontWeight: "600",
+                cursor: "pointer",
+                transition: "0.25s",
               }}
+              onMouseOver={(e) => (e.target.style.background = "#e8f3ff")}
+              onMouseOut={(e) => (e.target.style.background = "#ffffff")}
               onClick={handleLogout}
             >
               Logout
             </button>
+
             <button
               style={{
                 background: "#5dc3f7",
                 color: "white",
                 border: "none",
-                borderRadius: "4px",
+                borderRadius: "8px",
                 padding: "8px 18px",
-                fontWeight: "bold",
+                fontWeight: "600",
                 cursor: "pointer",
-                marginLeft: "18px"
+                transition: "0.25s",
               }}
+              onMouseOver={(e) => (e.target.style.opacity = 0.8)}
+              onMouseOut={(e) => (e.target.style.opacity = 1)}
               onClick={goToUpload}
             >
               Upload
             </button>
+
             <button
               style={{
                 background: "#81e291",
                 color: "#185a34",
                 border: "none",
-                borderRadius: "4px",
+                borderRadius: "8px",
                 padding: "8px 18px",
-                fontWeight: "bold",
+                fontWeight: "600",
                 cursor: "pointer",
-                marginLeft: "7px"
+                transition: "0.25s",
               }}
+              onMouseOver={(e) => (e.target.style.opacity = 0.8)}
+              onMouseOut={(e) => (e.target.style.opacity = 1)}
               onClick={goToHistory}
             >
               History
@@ -151,9 +165,14 @@ function App() {
           </div>
         )}
       </nav>
-      {content}
+
+      {/* Page Content */}
+      <div style={{ paddingBottom: "35px" }}>
+        {content}
+      </div>
     </div>
   );
+
 }
 
 export default App;

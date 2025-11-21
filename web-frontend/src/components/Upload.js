@@ -10,125 +10,134 @@ const Upload = ({ token, onGoHistory, onGoSummary, summaryId }) => {
   const [summary, setSummary] = useState(null);
 
   const styles = {
-    container: {
-      padding: "40px 30px",
-      maxWidth: "850px",
-      margin: "0 auto",
-      background: "#f5f8fb",
-      borderRadius: "14px",
-      boxShadow: "0 4px 18px rgba(0,0,0,0.08)",
-    },
-    title: {
-      textAlign: "center",
-      color: "#234f7e",
-      fontSize: "26px",
-      letterSpacing: "1px",
-      marginBottom: "25px",
-      fontWeight: "700",
-    },
-    navButtons: {
+    page: {
       display: "flex",
       justifyContent: "center",
-      gap: "18px",
-      marginBottom: "22px",
+      padding: "40px 0",
+      background: "#eef3f7",
+      minHeight: "100vh",
     },
-    navButton: {
+    card: {
+      width: "900px",
+      background: "#ffffff",
+      borderRadius: "18px",
+      padding: "35px 45px",
+      boxShadow: "0px 6px 18px rgba(0,0,0,0.1)",
+    },
+    header: {
+      textAlign: "center",
+      color: "#003b6d",
+      fontSize: "28px",
+      fontWeight: "700",
+      marginBottom: "25px",
+      letterSpacing: "0.5px",
+    },
+    navBar: {
+      display: "flex",
+      justifyContent: "center",
+      gap: "14px",
+      marginBottom: "30px",
+    },
+    navBtn: {
+      padding: "9px 24px",
+      borderRadius: "10px",
       border: "none",
-      borderRadius: "8px",
-      padding: "10px 24px",
       fontWeight: 600,
-      cursor: "pointer",
       fontSize: "15px",
+      cursor: "pointer",
+      transition: "0.25s",
     },
-    historyBtn: {
+    history: {
       backgroundColor: "#7ee6a1",
       color: "#08351d",
     },
-    summaryBtn: {
+    summary: {
       backgroundColor: "#5cc4fa",
-      color: "#083930",
+      color: "#09313a",
+      opacity: 1,
     },
-    fileBlock: {
-      marginBottom: "16px",
-      background: "#fff",
-      padding: "18px",
-      borderRadius: "10px",
-      boxShadow: "0 3px 10px rgba(0,0,0,0.06)",
+    noSummary: {
+      backgroundColor: "#5cc4fa",
+      color: "#09313a",
+      opacity: 0.4,
+      cursor: "not-allowed",
     },
-    fileInput: {
-      border: "1px solid #c9c9c9",
-      borderRadius: "6px",
-      padding: "7px",
+    uploadContainer: {
+      background: "#f9fcff",
+      padding: "20px",
+      borderRadius: "12px",
+      border: "1px solid #cddce8",
+      marginBottom: "20px",
+    },
+    input: {
       width: "100%",
+      border: "1px solid #b7c4d1",
+      borderRadius: "8px",
+      padding: "10px 12px",
+      fontSize: "15px",
     },
     uploadBtn: {
+      width: "100%",
       background: "#296cad",
       color: "white",
       border: "none",
-      borderRadius: "8px",
-      padding: "12px 22px",
-      fontWeight: 600,
-      marginTop: "14px",
-      width: "100%",
-      cursor: "pointer",
+      borderRadius: "10px",
+      padding: "13px 0",
       fontSize: "16px",
-    },
-    messageSuccess: {
+      fontWeight: 600,
+      cursor: "pointer",
       marginTop: "12px",
-      padding: "10px",
-      background: "#d7f8e5",
-      borderRadius: "6px",
-      color: "#0d5e2c",
-      fontWeight: "600",
+      transition: "0.25s",
     },
-    messageError: {
+    success: {
+      background: "#d6ffe9",
+      padding: "10px",
+      borderRadius: "8px",
+      color: "#035a2d",
       marginTop: "12px",
-      padding: "10px",
-      background: "#ffd4d4",
-      borderRadius: "6px",
-      color: "#a10000",
-      fontWeight: "600",
+      fontWeight: 600,
     },
-    summaryContainer: {
+    error: {
+      background: "#ffd3d3",
+      padding: "10px",
+      borderRadius: "8px",
+      color: "#a30000",
+      marginTop: "12px",
+      fontWeight: 600,
+    },
+    summaryBox: {
       marginTop: "35px",
+      padding: "30px",
       background: "#ffffff",
-      padding: "28px",
-      borderRadius: "14px",
-      boxShadow: "0 3px 14px rgba(0,0,0,0.08)",
+      borderRadius: "15px",
+      boxShadow: "0px 4px 14px rgba(0,0,0,0.08)",
     },
     summaryTitle: {
       textAlign: "center",
-      marginBottom: "20px",
       fontSize: "22px",
-      fontWeight: 700,
-      color: "#1d425f",
+      fontWeight: "700",
+      marginBottom: "20px",
+      color: "#00385b",
     },
-    list: {
-      listStyle: "none",
-      paddingLeft: 0,
-      fontSize: "1.05rem",
-      lineHeight: "1.9",
-    },
-    chartsRow: {
+    charts: {
       display: "flex",
-      flexWrap: "wrap",
       justifyContent: "center",
       gap: "35px",
-      marginTop: "20px",
+      flexWrap: "wrap",
+      marginTop: "10px",
     },
     chartCard: {
-      background: "#ffffff",
-      padding: "18px",
-      width: "270px",
+      padding: "16px",
+      background: "#fdfdfd",
       borderRadius: "14px",
-      boxShadow: "0 2px 10px rgba(0,0,0,0.08)",
+      width: "270px",
+      boxShadow: "0px 3px 10px rgba(0,0,0,0.07)",
     },
-    chartLabel: {
+    label: {
       textAlign: "center",
-      marginTop: "8px",
-      fontSize: "0.98em",
       fontWeight: "600",
-      color: "#27445c",
+      marginTop: "8px",
+      color: "#264355",
     },
   };
 
@@ -193,64 +202,58 @@ const Upload = ({ token, onGoHistory, onGoSummary, summaryId }) => {
   }
 
   return (
-    <div style={styles.container}>
-      <h3 style={styles.title}>Upload Equipment CSV</h3>
+    <div style={styles.page}>
+      <div style={styles.card}>
+        <h3 style={styles.header}>Upload Equipment CSV</h3>
 
-      <div style={styles.navButtons}>
-        <button style={{ ...styles.navButton, ...styles.historyBtn }} onClick={onGoHistory}>
-          History
-        </button>
+        <div style={styles.navBar}>
+          <button style={{ ...styles.navBtn, ...styles.history }} onClick={onGoHistory}>
+            History
+          </button>
 
-        <button
-          style={{
-            ...styles.navButton,
-            ...styles.summaryBtn,
-            cursor: summaryId ? "pointer" : "not-allowed",
-            opacity: summaryId ? 1 : 0.6,
-          }}
-          onClick={() => summaryId && onGoSummary()}
-        >
-          Summary
-        </button>
-      </div>
+          <button
+            style={
+              summaryId ? { ...styles.navBtn, ...styles.summary } : { ...styles.navBtn, ...styles.noSummary }
+            }
+            onClick={() => summaryId && onGoSummary()}
+          >
+            Summary
+          </button>
+        </div>
 
-      <div style={styles.fileBlock}>
-        <input type="file" accept=".csv" onChange={handleFileChange} style={styles.fileInput} />
+        <div style={styles.uploadContainer}>
+          <input type="file" accept=".csv" onChange={handleFileChange} style={styles.input} />
+          <button style={styles.uploadBtn} onClick={handleUpload}>
+            Upload & Analyze
+          </button>
+          {status && <div style={styles.success}>{status}</div>}
+          {error && <div style={styles.error}>{error}</div>}
+        </div>
 
-        <button style={styles.uploadBtn} onClick={handleUpload}>
-          Upload & Analyze
-        </button>
+        {summary && (
+          <div style={styles.summaryBox}>
+            <h4 style={styles.summaryTitle}>Equipment Analytics Summary</h4>
 
-        {status && <div style={styles.messageSuccess}>{status}</div>}
-        {error && <div style={styles.messageError}>{error}</div>}
-      </div>
+            <ul>
+              <li>
+                <b>Total Rows:</b> {summary.total_count}
+              </li>
+            </ul>
 
-      {summary && (
-        <div style={styles.summaryContainer}>
-          <h4 style={styles.summaryTitle}>Equipment Analytics Summary</h4>
+            <div style={styles.charts}>
+              <div style={styles.chartCard}>
+                <Bar data={chartBarData} options={{ plugins: { legend: { display: false } } }} />
+                <div style={styles.label}>Type Distribution</div>
+              </div>
 
-          <ul style={styles.list}>
-            <li>
-              <b>Total rows:</b> {summary.total_count}
-            </li>
-          </ul>
-
-          <div style={styles.chartsRow}>
-            <div style={styles.chartCard}>
-              <Bar data={chartBarData} options={{ plugins: { legend: { display: false } } }} />
-              <div style={styles.chartLabel}>Type Distribution</div>
-            </div>
-
-            <div style={styles.chartCard}>
-              <Doughnut
-                data={chartDoughnutData}
-                options={{ plugins: { legend: { position: "bottom" } } }}
-              />
-              <div style={styles.chartLabel}>Parameter Averages</div>
+              <div style={styles.chartCard}>
+                <Doughnut data={chartDoughnutData} options={{ plugins: { legend: { position: "bottom" } } }} />
+                <div style={styles.label}>Parameter Averages</div>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
