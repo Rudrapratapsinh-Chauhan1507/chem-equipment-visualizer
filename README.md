@@ -73,6 +73,7 @@ python main.py
 🔐 Key API Endpoints
 ```
 | Method | Endpoint | Purpose |
+|--------|------------|----------|
 | POST	 | /api/register/ |	Create a new user |
 | POST	 | /api/login/ |	Authenticate & retrieve token |
 | POST	 | /api/upload/ |	Upload CSV & auto-analyze |
@@ -84,9 +85,11 @@ python main.py
 🧭 Suggested Future Enhancements
 ```
 Feature	Benefit
-📄 CSV Report Export	Share or document analysis results
-🔮 Trend Prediction 
+```
+📄 PDF Report Export	Share or document analysis results
+🔮 Trend Prediction & Anomaly Detection	Predict maintenance issues
 🛠 Admin Panel	Multi-user equipment data monitoring
+☁ Cloud Deployment	Remote access & scalability
 💽 Desktop .exe Packaging	Industrial and factory floor usability
 🧑‍🔬 Final Thought
 
