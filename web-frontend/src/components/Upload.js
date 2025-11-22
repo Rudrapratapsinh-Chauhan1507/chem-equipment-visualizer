@@ -21,12 +21,14 @@ const Upload = ({ token, onUpload }) => {
 
     try {
       const res = await uploadCSV(file, token);
-      setStatus("File uploaded and analyzed successfully!");
-      setSummary(res.data.summary || res.data);
 
-      // ✨ FIX: Always send real dataset with ID
-      const returnedData = res.data.summary ? res.data : res.data.data || res.data;
-      if (returnedData && returnedData.id) onUpload(returnedData);
+      setStatus("File uploaded and analyzed successfully!");
+
+      const summaryData = res.data.summary ?? res.data;
+      setSummary(summaryData);
+
+      // send dataset info with ID
+      if (res.data.id) onUpload(res.data);
 
     } catch (err) {
       setError(
@@ -38,13 +40,15 @@ const Upload = ({ token, onUpload }) => {
   };
 
   let chartBarData = null, chartDoughnutData = null;
+  const hasSummary = summary && summary.total_count;
 
-  if (summary && summary.type_distribution && summary.average_flowrate) {
+  if (hasSummary) {
+    const types = summary.type_distribution || {};
     chartBarData = {
-      labels: Object.keys(summary.type_distribution),
+      labels: Object.keys(types),
       datasets: [{
         label: "Count",
-        data: Object.values(summary.type_distribution),
+        data: Object.values(types),
         backgroundColor: ["#7C83F6","#B2C8DF","#D6E6F2","#FFF7FC","#5F6F94"]
       }]
     };
@@ -54,9 +58,9 @@ const Upload = ({ token, onUpload }) => {
       datasets: [{
         label: "Average",
         data: [
-          summary.average_flowrate,
-          summary.average_pressure,
-          summary.average_temperature
+          summary.average_flowrate ?? 0,
+          summary.average_pressure ?? 0,
+          summary.average_temperature ?? 0
         ],
         backgroundColor: ["#20CA7D","#F2C335","#E93A52"]
       }]
@@ -90,7 +94,7 @@ const Upload = ({ token, onUpload }) => {
           {error && <div style={{ background: "#ffd3d3", padding: "10px", borderRadius: "8px", color: "#a30000", marginTop: "12px", fontWeight: 600 }}>{error}</div>}
         </div>
 
-        {summary && (
+        {hasSummary && (
           <div style={{ marginTop: "35px", padding: "30px", background: "#ffffff", borderRadius: "15px", boxShadow: "0px 4px 14px rgba(0,0,0,0.08)" }}>
             <h4 style={{ textAlign: "center", fontSize: "22px", fontWeight: 700, marginBottom: "20px", color: "#00385b" }}>Equipment Analytics Summary</h4>
 

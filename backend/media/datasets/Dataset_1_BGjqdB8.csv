@@ -1,0 +1,11 @@
+﻿Equipment,Type,Flowrate,Pressure,Temprature
+AA,Pump,50,1.2,55
+BB,Pump,55,1.5,60
+CC,Valve,30,0.9,45
+DD,Valve,35,0.8,40
+EE,Reactor,150,5.5,130
+FF,Compressure,180,6.2,160
+GG,Condenser,85,2.1,75
+HH,HeatExhanger,90,2.4,88
+II,Reactor,140,4.8,120
+JJ,Compressure,160,6,150

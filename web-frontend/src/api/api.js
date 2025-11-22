@@ -6,7 +6,7 @@ const API_BASE = "http://127.0.0.1:8000/api/";
 export const login = (username, password) =>
   axios.post(`${API_BASE}login/`, { username, password });
 
-export const register = data =>
+export const register = (data) =>
   axios.post(`${API_BASE}register/`, data);
 
 // ---------- UPLOAD ----------
@@ -14,7 +14,10 @@ export const uploadCSV = (file, token) => {
   const form = new FormData();
   form.append("file", file);
   return axios.post(`${API_BASE}upload/`, form, {
-    headers: { Authorization: `Token ${token}` },
+    headers: {
+      Authorization: `Token ${token}`,
+      "Content-Type": "multipart/form-data",
+    },
   });
 };
 
@@ -30,7 +33,7 @@ export const fetchSummary = (id, token) =>
     headers: { Authorization: `Token ${token}` },
   });
 
-// ---------- DELETE SINGLE DATASET ----------
+// ---------- DELETE ----------
 export const deleteDataset = (id, token) =>
   axios.delete(`${API_BASE}dataset/delete/${id}/`, {
     headers: { Authorization: `Token ${token}` },
